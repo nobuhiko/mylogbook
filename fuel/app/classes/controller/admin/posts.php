@@ -4,15 +4,20 @@ class Controller_Admin_Posts extends Controller_Admin
 
 	public function action_index()
 	{
-		$data['posts'] = Model_Post::find('all');
-		$this->template->title = "Posts";
-		$this->template->content = View::forge('admin/posts/index', $data);
+        $data['posts'] = Model_Post::find('all', array(
+            'where'     => array('user_id'          => $this->current_user->id),
+            'order_by'  => array('serial_dive_no'   => 'desc')
+        ));
+		$this->template->title      = "Posts";
+		$this->template->content    = View::forge('admin/posts/index', $data);
 
 	}
 
 	public function action_view($id = null)
 	{
-		$data['post'] = Model_Post::find($id);
+        $data['post'] = Model_Post::find($id, array(
+            'where' => array('user_id' => $this->current_user->id),
+        ));
 
 		$this->template->title = "Post";
 		$this->template->content = View::forge('admin/posts/view', $data);
@@ -128,12 +133,7 @@ class Controller_Admin_Posts extends Controller_Admin
 			$post->report = Input::post('report');
 			$post->comment = Input::post('comment');
             $post->status = Input::post('status');
-
-            //$user_id = Auth::instance()->get_user_id();
-			//$post->user_id = $user_id[1];
-			$post->user_id   = $this->current_user->id;
-
-			//$post->user_id = Input::post('user_id');
+			$post->user_id = $this->current_user->id;
 
 			if ($post->save())
 			{
@@ -201,8 +201,9 @@ class Controller_Admin_Posts extends Controller_Admin
 
 	public function action_delete($id = null)
 	{
-		if ($post = Model_Post::find($id))
-		{
+        if ($post = Model_Post::find($id, array(
+            'where' => array('user_id' => $this->current_user->id),
+        ))) {
 			$post->delete();
 
 			Session::set_flash('success', e('Deleted post #'.$id));
