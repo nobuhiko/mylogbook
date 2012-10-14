@@ -29,7 +29,7 @@
 			<td><?php echo $post->exit; ?></td>
 			<td><?php echo $post->depth_of_water_ave; ?></td>
 			<td><?php echo $post->depth_of_water_max; ?></td>
-			<td><?php echo $post->dive_time; ?></td>
+			<td><?php echo $post->dive_time; ?> min</td>
 			<td><?php echo Model_Lookup::item('post_weather', $post->weather); ?></td>
 			<td><?php echo Model_Lookup::item('post_status', $post->status); ?></td>
 			<td>

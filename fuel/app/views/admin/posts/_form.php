@@ -108,18 +108,7 @@
 
 			</div>
         </div>
-<!--
-		<div class="clearfix">
-			<?php echo Form::label('Total Time', 'dive_time'); ?>
-
-			<div class="input-append">
-				<?php echo Form::input('dive_time', Input::post('dive_time', isset($post) ? $post->dive_time : ''), array('class' => 'span2')); ?>
-                <span class="add-on">min</span>
-
-			</div>
-        </div>
--->
-		<div class="clearfix">
+        <div class="clearfix">
 			<?php echo Form::label('Weather', 'weather'); ?>
 
 			<div class="input">

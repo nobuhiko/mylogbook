@@ -37,19 +37,20 @@ class Controller_Admin_Posts extends Controller_Admin
 					'diving_shop' => Input::post('diving_shop'),
 					'entry' => Input::post('entry'),
 					'exit' => Input::post('exit'),
+					'dive_time' => Model_Post::calc_diff_of_time(Input::post('exit'), Input::post('entry')),
 					'water_temp_top' => Input::post('water_temp_top'),
 					'water_temp_bottom' => Input::post('water_temp_bottom'),
 					'depth_of_water_ave' => Input::post('depth_of_water_ave'),
 					'depth_of_water_max' => Input::post('depth_of_water_max'),
 					'pressure_start' => Input::post('pressure_start'),
 					'pressure_end' => Input::post('pressure_end'),
-					'dive_time' => Input::post('dive_time'),
 					'weather' => Input::post('weather'),
 					'air_temp' => Input::post('air_temp'),
 					'wind' => Input::post('wind'),
 					'wind_type' => Input::post('wind_type'),
 					'wave' => Input::post('wave'),
 					'suit' => Input::post('suit'),
+					'suit_thickness' => Input::post('suit_thickness'),
 					'weight' => Input::post('weight'),
 					'computer' => Input::post('computer'),
 					'tank' => Input::post('tank'),
@@ -61,7 +62,6 @@ class Controller_Admin_Posts extends Controller_Admin
 					'report' => Input::post('report'),
 					'comment' => Input::post('comment'),
 					'status' => Input::post('status'),
-					//'user_id' => Input::post('user_id'),
 					'user_id' => $this->current_user->id,
 				));
 
@@ -110,7 +110,7 @@ class Controller_Admin_Posts extends Controller_Admin
 			$post->depth_of_water_max = Input::post('depth_of_water_max');
 			$post->pressure_start = Input::post('pressure_start');
 			$post->pressure_end = Input::post('pressure_end');
-			$post->dive_time = Input::post('dive_time');
+            $post->dive_time = Model_Post::calc_diff_of_time(Input::post('exit'), Input::post('entry'));
 			$post->weather = Input::post('weather');
 			$post->air_temp = Input::post('air_temp');
 			$post->wind = Input::post('wind');

@@ -92,6 +92,10 @@ class Model_Post extends \Orm\Model
 		//$val->add_field('user_id', 'User Id', 'valid_string[numeric]');
 
 		return $val;
-	}
+    }
+
+    public static function calc_diff_of_time($end, $first) {
+        return intval((strtotime($end) - strtotime($first)) / (60));
+    }
 
 }
