@@ -63,8 +63,8 @@ class Model_Post extends \Orm\Model
 		$val->add_field('point_type', 'Point Type', 'valid_string[numeric]');
 		$val->add_field('purpose_of_dive', 'Purpose Of Dive', 'valid_string[numeric]');
 		$val->add_field('diving_shop', 'Diving Shop', 'max_length[255]');
-		$val->add_field('entry', 'Entry', 'max_length[255]');
-		$val->add_field('exit', 'Exit', 'max_length[255]');
+		$val->add_field('entry', 'Entry', 'valid_string[numeric,punctuation]|max_length[5]');
+		$val->add_field('exit', 'Exit', 'valid_string[numeric,punctuation]|max_length[5]');
 		$val->add_field('water_temp_top', 'Water Temp Top', 'max_length[255]');
 		$val->add_field('water_temp_bottom', 'Water Temp Bottom', 'max_length[255]');
 		$val->add_field('depth_of_water_ave', 'Depth Of Water Ave', 'max_length[255]');
