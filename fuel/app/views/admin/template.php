@@ -5,18 +5,25 @@
 	<title><?php echo $title; ?></title>
 	<?php echo Asset::css('bootstrap.css'); ?>
 	<?php echo Asset::css('datepicker.css'); ?>
+	<?php echo Asset::css('select2.css'); ?>
 	<style>
 		body { margin: 50px; }
 	</style>
 	<?php echo Asset::js(array(
 		'http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js',
 		'bootstrap.js',
-		'bootstrap-datepicker.js'
+		'bootstrap-datepicker.js',
+		'select2.js',
 	)); ?>
 	<script>
     $(function(){
         $('.topbar').dropdown();
         $('.datepicker').datepicker();
+    });
+    $(document).ready(function() {
+        $("#form_report").select2({
+            tags:["カクレクマノミ", "クマノミ", "ハナビラクマノミ"],
+            tokenSeparators: [",", " "]});
     });
 	</script>
 </head>
@@ -26,7 +33,7 @@
 	<div class="navbar navbar-fixed-top">
 	    <div class="navbar-inner">
 	        <div class="container">
-	            <a href="#" class="brand">My Site</a>
+	            <a href="#" class="brand">My LogBook</a>
 	            <ul class="nav">
 	                <li class="<?php echo Uri::segment(2) == '' ? 'active' : '' ?>">
 						<?php echo Html::anchor('admin', 'Dashboard') ?>

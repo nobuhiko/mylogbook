@@ -122,6 +122,7 @@ class Controller_Admin_Posts extends Controller_Admin
 			$post->wind_type = Input::post('wind_type');
 			$post->wave = Input::post('wave');
 			$post->suit = Input::post('suit');
+			$post->suit_thickness = Input::post('suit_thickness');
 			$post->weight = Input::post('weight');
 			$post->computer = Input::post('computer');
 			$post->tank = Input::post('tank');

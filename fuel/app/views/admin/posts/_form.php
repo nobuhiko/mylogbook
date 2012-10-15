@@ -194,8 +194,7 @@
 			<?php echo Form::label('Report', 'report'); ?>
 
 			<div class="input">
-				<?php echo Form::textarea('report', Input::post('report', isset($post) ? $post->report : ''), array('class' => 'span8', 'rows' => 8)); ?>
-
+                <?php echo Form::input('report', Input::post('report', isset($post) ? $post->report : ''), array('style' => 'width:620px')); ?>
 			</div>
 		</div>
 		<div class="clearfix">
