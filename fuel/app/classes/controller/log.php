@@ -77,6 +77,7 @@ class controller_log extends Controller_Base
                     $post->$key = $value;
                 }
 
+                $post->dive_time = Model_Post::calc_diff_of_time($post->exit, $post->entry);
                 $post->user_id = $this->current_user->id;
                 $post->creatures = Model_Creature::parseCreatures(Input::post('report'));
 
