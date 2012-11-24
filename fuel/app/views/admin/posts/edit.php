@@ -1,7 +1,5 @@
-<h2>Editing Post</h2>
-<br>
-
 <?php echo render('admin/posts/_form'); ?>
-<p>
-	<?php echo Html::anchor('admin/posts/view/'.$post->id, 'View'); ?> |
-	<?php echo Html::anchor('admin/posts', 'Back'); ?></p>
+<ul class="pager">
+    <li><?php echo Html::anchor('admin/posts/view/'.$post->id, 'View'); ?></li>
+    <li><?php echo Html::anchor('admin/posts', 'Back'); ?></li>
+</ul>
