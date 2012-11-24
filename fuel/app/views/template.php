@@ -34,7 +34,7 @@ $(function(){
 
 (function(w,d){
   <?php if (Fuel::$env == \Fuel::PRODUCTION): ?>
-  w._gaq=[["_setAccount","UA-XXXXXXXX-X"],["_trackPageview"]];
+  w._gaq=[["_setAccount","UA-11221610-17"],["_trackPageview"]];
   <?php endif;?>
   w.___gcfg={lang:"ja"};
   var s,e = d.getElementsByTagName("script")[0],
@@ -98,16 +98,18 @@ $(function(){
       </div>
       <hr/>
       <footer>
-      <p class="pull-right"></p>
+      <p class="pull-right"><a href="#">Back to top</a></p>
       <p>&copy;僕のログブック
       </p>
 
       <div class="btn-group">
-        <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://iro.stagram.info/" data-via="redsnow_" data-hashtags="irostagram">Tweet</a>
-        <div class="g-plusone" data-size="medium" data-href="http://iro.stagram.info/"></div>
-        <a href="http://b.hatena.ne.jp/entry/http://iro.stagram.info/" class="hatena-bookmark-button" data-hatena-bookmark-layout="standard-balloon" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only.gif" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a>
-        <fb:like href="http://iro.stagram.info/" send="false" layout="button_count" width="450" show_faces="false"></fb:like>
+        <a href="https://twitter.com/share" class="twitter-share-button" data-url="<?= Uri::base()?>" data-via="" data-hashtags="mylogbook">Tweet</a>
+        <div class="g-plusone" data-size="medium" data-href="<?= Uri::base()?>"></div>
+        <a href="http://b.hatena.ne.jp/entry/<?= Uri::base()?>" class="hatena-bookmark-button" data-hatena-bookmark-layout="standard-balloon" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only.gif" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a>
+        <fb:like href="<?= Uri::base()?>" send="false" layout="button_count" width="450" show_faces="false"></fb:like>
       </div>
+
+      <!-- <div class="fb-like-box" data-href="https://www.facebook.com/pages/%E5%83%95%E3%81%AE%E3%83%AD%E3%82%B0%E3%83%96%E3%83%83%E3%82%AF/382466838502809" data-width="450" data-height="200" data-show-faces="true" data-stream="true" data-header="true"></div> -->
 
       </footer>
     </div>

@@ -149,6 +149,7 @@ class controller_log extends Controller_Base
 
         $fieldset->add_text('entry', 'Entry')
             ->add_rule($zentohan)
+            ->add_rule('match_pattern', '/^(0[0-9]{1}|1{1}[0-9]{1}|2{1}[0-3]{1}):(0[0-9]{1}|[1-5]{1}[0-9]{1})$/')
             ->add_rule('max_length', 5);
 
         $fieldset->add_text('pressure_start', 'Entry')
@@ -158,6 +159,7 @@ class controller_log extends Controller_Base
 
         $fieldset->add_text('exit', 'Exit')
             ->add_rule($zentohan)
+            ->add_rule('match_pattern', '/^(0[0-9]{1}|1{1}[0-9]{1}|2{1}[0-3]{1}):(0[0-9]{1}|[1-5]{1}[0-9]{1})$/')
             ->add_rule('max_length', 5);
 
         $fieldset->add_text('pressure_end', 'Exit')

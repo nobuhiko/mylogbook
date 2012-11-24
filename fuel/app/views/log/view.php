@@ -191,7 +191,7 @@
             <?php if ($post->comment): ?>
             <tr>
                 <th>Comment:</th>
-                <td><?php echo $post->comment; ?></td>
+                <td><?php echo nl2br($post->comment); ?></td>
             </tr>
             <?php endif; ?>
         </table>

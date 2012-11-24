@@ -8,9 +8,11 @@
     そんなサービスを目指しています
     </p>
     <p>
+    <?php if (!Auth::check()): ?>
     <a href="/auth/session/twitter" class="btn btn-primary btn-large">
         利用を開始する
     </a>
+    <?php endif;?>
     <a href="/user/redsnow_" class="btn btn-large">
         例を見てみる
     </a>
