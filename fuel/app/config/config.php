@@ -41,7 +41,7 @@ return array(
 	 *
 	 * Set this to false or remove if you using mod_rewrite.
 	 */
-	'index_file'  => 'index.php',
+	'index_file'  => '',
 
 	'profiling'  => false,
 
@@ -142,7 +142,8 @@ return array(
 			'Fuel\\Core\\Response',
 			'Fuel\\Core\\View',
 			'Fuel\\Core\\ViewModel',
-			'Closure',
+            'Closure',
+            'viewform',
 		)
 	),
 
@@ -204,7 +205,7 @@ return array(
 	 * Paths MUST end with a directory separator (the DS constant)!
 	 */
 	'package_paths' => array(
-		//PKGPATH
+		PKGPATH
 	),
 
 
@@ -227,6 +228,10 @@ return array(
 		'packages'  => array(
             'orm',
             'auth',
+            'oauth',
+            'oauth2',
+            'ninjauth',
+            'viewform',
 		),
 
 		/**

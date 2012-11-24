@@ -1,107 +1,201 @@
-<h2>Viewing #<?php echo $post->id; ?></h2>
+<h2>Viewing #<td><?php echo $post->id; ?></h2>
+<br>
+<table class="table table-striped">
+<?php if ($post->serial_dive_no): ?>
+<tr>
+	<th>Dive No:</th>
+    <td><?php echo $post->serial_dive_no; ?></td>
+</tr>
+<?php endif; ?>
+<?php if ($post->date): ?>
+<tr>
+	<th>Date:</th>
+	<td><?php echo $post->date; ?></td>
+</tr>
+<?php endif; ?>
+<?php if ($post->location): ?>
+<tr>
+	<th>Location:</th>
+	<td><?php echo $post->location; ?></td>
+</tr>
+<?php endif; ?>
+<?php if ($post->point): ?>
+<tr>
+	<th>Point:</th>
+	<td><?php echo $post->point; ?></td>
+</tr>
+<?php endif; ?>
+<?php if ($post->point_type): ?>
+<tr>
+	<th></th>
+	<td><?php echo Model_Lookup::item('post_point_type', $post->point_type); ?></td>
+</tr>
+<?php endif; ?>
+<?php if ($post->diving_shop): ?>
+<tr>
+	<th>Diving Shop:</th>
+	<td><?php echo $post->diving_shop; ?></td>
+</tr>
+<?php endif; ?>
+<?php if ($post->dive_time): ?>
+<tr>
+	<th>Dive Time:</th>
+	<td><?php echo $post->dive_time; ?>min</td>
+</tr>
+<?php endif; ?>
+<?php if ($post->entry): ?>
+<tr>
+	<th>Entry:</th>
+	<td><?php echo $post->entry; ?></td>
+</tr>
+<?php endif; ?>
+<?php if ($post->pressure_start): ?>
+<tr>
+	<th></th>
+	<td><?php echo $post->pressure_start; ?>bar</td>
+</tr>
+<?php endif; ?>
+<?php if ($post->exit): ?>
+<tr>
+	<th>Exit:</th>
+	<td><?php echo $post->exit; ?></td>
+</tr>
+<?php endif; ?>
+<?php if ($post->pressure_end): ?>
+<tr>
+	<th></th>
+	<td><?php echo $post->pressure_end; ?>bar</td>
+</tr>
+<?php endif; ?>
+<?php if ($post->depth_of_water_ave): ?>
+<tr>
+	<th>Ave:</th>
+	<td><?php echo $post->depth_of_water_ave; ?>m</tr>
+</tr>
+<?php endif; ?>
+<?php if ($post->depth_of_water_max): ?>
+<tr>
+	<th>Max:</th>
+	<td><?php echo $post->depth_of_water_max; ?>m</tr>
+</tr>
+<?php endif; ?>
+<?php if ($post->water_temp_bottom): ?>
+<tr>
+	<th>Water temp:</th>
+	<td><?php echo $post->water_temp_bottom; ?>℃</tr>
+</tr>
+<?php endif; ?>
+<?php if ($post->air_temp): ?>
+<tr>
+	<th>Air temp:</th>
+	<td><?php echo $post->air_temp; ?></td>
+</tr>
+<?php endif; ?>
+<?php if ($post->air_temp): ?>
+<tr>
+	<th>Weather:</th>
+    <td><?php echo Model_Lookup::item('post_weather', $post->weather); ?></td>
+</tr>
+<?php endif; ?>
+<?php if ($post->wind): ?>
+<tr>
+	<th>Wind:</th>
+	<td><?php echo $post->wind; ?></td>
+</tr>
+<?php endif; ?>
+<?php if ($post->wind_type): ?>
+<tr>
+	<th>Wind type:</th>
+	<td><?php echo $post->wind_type; ?></td>
+</tr>
+<?php endif; ?>
+<?php if ($post->wave): ?>
+<tr>
+	<th>Wave:</th>
+	<td><?php echo $post->wave; ?></td>
+</tr>
+<?php endif; ?>
+<?php if ($post->suit): ?>
+<tr>
+	<th>Suit:</th>
+    <td><?php echo Model_Lookup::item('post_suit', $post->suit); ?></td>
+</tr>
+<?php endif; ?>
+<?php if ($post->suit_thickness): ?>
+<tr>
+	<th></th>
+    <td><?php echo $post->suit_thickness; ?>mm</td>
+</tr>
+<?php endif; ?>
+<?php if ($post->weight): ?>
+<tr>
+	<th>Weight:</th>
+	<td><?php echo $post->weight; ?>kg</td>
+</tr>
+<?php endif; ?>
+<?php if ($post->computer): ?>
+<tr>
+	<th>Computer:</th>
+	<td><?php echo $post->computer; ?></td>
+</tr>
+<?php endif; ?>
+<?php if ($post->tank): ?>
+<tr>
+	<th>Tank:</th>
+    <td><?php echo Model_Lookup::item('post_tank', $post->tank); ?></td>
+</tr>
+<?php endif; ?>
+<?php if ($post->tank_cap): ?>
+<tr>
+	<th></th>
+	<td><?php echo $post->tank_cap; ?>リットル</td>
+</tr>
+<?php endif; ?>
+<?php if ($post->visibility): ?>
+<tr>
+	<th>Visibility:</th>
+	<td><?php echo $post->visibility; ?></td>
+</tr>
+<?php endif; ?>
+<?php if ($post->impression): ?>
+<tr>
+	<th>Impression:</th>
+	<td><?php echo $post->impression; ?></td>
+</tr>
+<?php endif; ?>
+<?php if ($post->buddy): ?>
+<tr>
+	<th>Buddy:</th>
+	<td><?php echo $post->buddy; ?></td>
+</tr>
+<?php endif; ?>
+<?php if ($post->instructor_and_guide): ?>
+<tr>
+	<th>Instructor and guide:</th>
+	<td><?php echo $post->instructor_and_guide; ?></td>
+</tr>
+<?php endif; ?>
+<?php if ($post->report): ?>
+<tr>
+	<th>Report:</th>
+	<td><?php echo $post->report; ?></td>
+</tr>
+<?php endif; ?>
+<?php if ($post->comment): ?>
+<tr>
+	<th>Comment:</th>
+	<td><?php echo $post->comment; ?></td>
+</tr>
+<?php endif; ?>
+<?php if ($post->status): ?>
+<tr>
+	<th>Status:</th>
+    <td><?php echo Model_Lookup::item('post_status', $post->status); ?></td>
+</tr>
+<?php endif; ?>
+</table>
 
-<p>
-	<strong>Serial dive no:</strong>
-	<?php echo $post->serial_dive_no; ?></p>
-<p>
-	<strong>Date:</strong>
-	<?php echo $post->date; ?></p>
-<p>
-	<strong>Location:</strong>
-	<?php echo $post->location; ?></p>
-<p>
-	<strong>Point:</strong>
-	<?php echo $post->point; ?></p>
-<p>
-	<strong>Point type:</strong>
-	<?php echo $post->point_type; ?></p>
-<p>
-	<strong>Purpose of dive:</strong>
-	<?php echo $post->purpose_of_dive; ?></p>
-<p>
-	<strong>Diving shop:</strong>
-	<?php echo $post->diving_shop; ?></p>
-<p>
-	<strong>Entry:</strong>
-	<?php echo $post->entry; ?></p>
-<p>
-	<strong>Exit:</strong>
-	<?php echo $post->exit; ?></p>
-<p>
-	<strong>Water temp top:</strong>
-	<?php echo $post->water_temp_top; ?></p>
-<p>
-	<strong>Water temp bottom:</strong>
-	<?php echo $post->water_temp_bottom; ?></p>
-<p>
-	<strong>Depth of water ave:</strong>
-	<?php echo $post->depth_of_water_ave; ?></p>
-<p>
-	<strong>Depth of water max:</strong>
-	<?php echo $post->depth_of_water_max; ?></p>
-<p>
-	<strong>Pressure start:</strong>
-	<?php echo $post->pressure_start; ?></p>
-<p>
-	<strong>Pressure end:</strong>
-	<?php echo $post->pressure_end; ?></p>
-<p>
-	<strong>Dive time:</strong>
-	<?php echo $post->dive_time; ?></p>
-<p>
-	<strong>Weather:</strong>
-	<?php echo $post->weather; ?></p>
-<p>
-	<strong>Air temp:</strong>
-	<?php echo $post->air_temp; ?></p>
-<p>
-	<strong>Wind:</strong>
-	<?php echo $post->wind; ?></p>
-<p>
-	<strong>Wind type:</strong>
-	<?php echo $post->wind_type; ?></p>
-<p>
-	<strong>Wave:</strong>
-	<?php echo $post->wave; ?></p>
-<p>
-	<strong>Suit:</strong>
-	<?php echo $post->suit; ?></p>
-<p>
-	<strong>Weight:</strong>
-	<?php echo $post->weight; ?></p>
-<p>
-	<strong>Computer:</strong>
-	<?php echo $post->computer; ?></p>
-<p>
-	<strong>Tank:</strong>
-	<?php echo $post->tank; ?></p>
-<p>
-	<strong>Tank cap:</strong>
-	<?php echo $post->tank_cap; ?></p>
-<p>
-	<strong>Visibility:</strong>
-	<?php echo $post->visibility; ?></p>
-<p>
-	<strong>Impression:</strong>
-	<?php echo $post->impression; ?></p>
-<p>
-	<strong>Buddy:</strong>
-	<?php echo $post->buddy; ?></p>
-<p>
-	<strong>Instructor and guide:</strong>
-	<?php echo $post->instructor_and_guide; ?></p>
-<p>
-	<strong>Report:</strong>
-	<?php echo $post->report; ?></p>
-<p>
-	<strong>Comment:</strong>
-	<?php echo $post->comment; ?></p>
-<p>
-	<strong>Status:</strong>
-	<?php echo $post->status; ?></p>
-<p>
-	<strong>User id:</strong>
-	<?php echo $post->user_id; ?></p>
-
-<?php echo Html::anchor('admin/posts/edit/'.$post->id, 'Edit'); ?> |
-<?php echo Html::anchor('admin/posts', 'Back'); ?>
+<ul class="pager">
+    <li><?php echo Html::anchor('admin/posts/edit/'.$post->id, 'Edit'); ?></li>
+    <li><?php echo Html::anchor('admin/posts', 'Back'); ?></li>
+</ul>
