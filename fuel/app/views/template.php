@@ -26,12 +26,12 @@
   'bootstrap.js',
 )); ?>
 
+  <link rel="shortcut icon" href="/favicon.ico">
   <script type="text/javascript">
 $(function(){
   $('.dropdown-toggle').dropdown();
   $('.datepicker').datepicker();
 });
-
 (function(w,d){
   <?php if (Fuel::$env == \Fuel::PRODUCTION): ?>
   w._gaq=[["_setAccount","UA-11221610-17"],["_trackPageview"]];
