@@ -49,7 +49,7 @@ $(function(){
 })(this, document);
 </script>
 
-  <meta property="og:title" content="<?=$title?>">
+<meta property="og:title" content="僕のログブック<?=$title?>">
 <meta property="og:type" content="website">
 <meta property="og:url" content="<?=Uri::current()?>">
 <meta property="og:image" content="<?=Uri::base(false);?>assets/img/title.jpg">
