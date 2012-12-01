@@ -1,200 +1,173 @@
 
 <div class="row">
-    <div class="span6">
+    <div class="span8">
+        <ul class="thumbnails">
 
-        <table class="table table-striped">
-            <?php if ($post->serial_dive_no): ?>
-            <tr>
-                <th>Dive No:</th>
-                <td><?php echo $post->serial_dive_no; ?></td>
-            </tr>
-            <?php endif; ?>
-            <?php if ($post->date): ?>
-            <tr>
-                <th>Date:</th>
-                <td><?php echo $post->date; ?></td>
-            </tr>
-            <?php endif; ?>
-            <?php if ($post->location): ?>
-            <tr>
-                <th>Location:</th>
-                <td><?php echo $post->location; ?></td>
-            </tr>
-            <?php endif; ?>
-            <?php if ($post->point): ?>
-            <tr>
-                <th>Point:</th>
-                <td><?php echo $post->point; ?></td>
-            </tr>
-            <?php endif; ?>
-            <?php if ($post->point_type): ?>
-            <tr>
-                <th></th>
-                <td><?php echo Model_Lookup::item('post_point_type', $post->point_type); ?></td>
-            </tr>
-            <?php endif; ?>
-            <?php if ($post->diving_shop): ?>
-            <tr>
-                <th>Diving Shop:</th>
-                <td><?php echo $post->diving_shop; ?></td>
-            </tr>
-            <?php endif; ?>
-            <?php if ($post->dive_time): ?>
-            <tr>
-                <th>Dive Time:</th>
-                <td><?php echo $post->dive_time; ?>min</td>
-            </tr>
-            <?php endif; ?>
-            <?php if ($post->entry): ?>
-            <tr>
-                <th>Entry:</th>
-                <td><?php echo $post->entry; ?></td>
-            </tr>
-            <?php endif; ?>
-            <?php if ($post->pressure_start): ?>
-            <tr>
-                <th></th>
-                <td><?php echo $post->pressure_start; ?>bar</td>
-            </tr>
-            <?php endif; ?>
-            <?php if ($post->exit): ?>
-            <tr>
-                <th>Exit:</th>
-                <td><?php echo $post->exit; ?></td>
-            </tr>
-            <?php endif; ?>
-            <?php if ($post->pressure_end): ?>
-            <tr>
-                <th></th>
-                <td><?php echo $post->pressure_end; ?>bar</td>
-            </tr>
-            <?php endif; ?>
-            <?php if ($post->depth_of_water_ave): ?>
-            <tr>
-                <th>Ave:</th>
-                <td><?php echo $post->depth_of_water_ave; ?>m</tr>
-            </tr>
-            <?php endif; ?>
-            <?php if ($post->depth_of_water_max): ?>
-            <tr>
-                <th>Max:</th>
-                <td><?php echo $post->depth_of_water_max; ?>m</tr>
-            </tr>
-            <?php endif; ?>
-            <?php if ($post->water_temp_bottom): ?>
-            <tr>
-                <th>Water temp:</th>
-                <td><?php echo $post->water_temp_bottom; ?>℃</tr>
-            </tr>
-            <?php endif; ?>
-            <?php if ($post->air_temp): ?>
-            <tr>
-                <th>Air temp:</th>
-                <td><?php echo $post->air_temp; ?></td>
-            </tr>
-            <?php endif; ?>
-            <?php if ($post->air_temp): ?>
-            <tr>
-                <th>Weather:</th>
-                <td><?php echo Model_Lookup::item('post_weather', $post->weather); ?></td>
-            </tr>
-            <?php endif; ?>
-            <?php if ($post->wind): ?>
-            <tr>
-                <th>Wind:</th>
-                <td><?php echo $post->wind; ?></td>
-            </tr>
-            <?php endif; ?>
-            <?php if ($post->wind_type): ?>
-            <tr>
-                <th>Wind type:</th>
-                <td><?php echo $post->wind_type; ?></td>
-            </tr>
-            <?php endif; ?>
-            <?php if ($post->wave): ?>
-            <tr>
-                <th>Wave:</th>
-                <td><?php echo $post->wave; ?></td>
-            </tr>
-            <?php endif; ?>
-            <?php if ($post->suit): ?>
-            <tr>
-                <th>Suit:</th>
-                <td><?php echo Model_Lookup::item('post_suit', $post->suit); ?></td>
-            </tr>
-            <?php endif; ?>
-            <?php if ($post->suit_thickness): ?>
-            <tr>
-                <th></th>
-                <td><?php echo $post->suit_thickness; ?>mm</td>
-            </tr>
-            <?php endif; ?>
-            <?php if ($post->weight): ?>
-            <tr>
-                <th>Weight:</th>
-                <td><?php echo $post->weight; ?>kg</td>
-            </tr>
-            <?php endif; ?>
-            <?php if ($post->computer): ?>
-            <tr>
-                <th>Computer:</th>
-                <td><?php echo $post->computer; ?></td>
-            </tr>
-            <?php endif; ?>
-            <?php if ($post->tank): ?>
-            <tr>
-                <th>Tank:</th>
-                <td><?php echo Model_Lookup::item('post_tank', $post->tank); ?></td>
-            </tr>
-            <?php endif; ?>
-            <?php if ($post->tank_cap): ?>
-            <tr>
-                <th></th>
-                <td><?php echo $post->tank_cap; ?>リットル</td>
-            </tr>
-            <?php endif; ?>
-            <?php if ($post->visibility): ?>
-            <tr>
-                <th>Visibility:</th>
-                <td><?php echo $post->visibility; ?></td>
-            </tr>
-            <?php endif; ?>
-            <?php if ($post->impression): ?>
-            <tr>
-                <th>Impression:</th>
-                <td><?php echo $post->impression; ?></td>
-            </tr>
-            <?php endif; ?>
-            <?php if ($post->buddy): ?>
-            <tr>
-                <th>Buddy:</th>
-                <td><?php echo $post->buddy; ?></td>
-            </tr>
-            <?php endif; ?>
-            <?php if ($post->instructor_and_guide): ?>
-            <tr>
-                <th>Instructor and guide:</th>
-                <td><?php echo $post->instructor_and_guide; ?></td>
-            </tr>
-            <?php endif; ?>
+            <?php $key = 'serial_dive_no';?>
+            <?php if ($post->$key): ?>
+            <li class="span2">
+            <span class="label"><?=__($key)?></span><p><?=$post->$key; ?></p>
+            </li>
+            <?php endif;?>
 
-        </table>
+            <?php $key = 'date';?>
+            <?php if ($post->$key): ?>
+            <li class="span2">
+            <span class="label"><?=__($key)?></span><p><?=$post->$key; ?></p>
+            </li>
+            <?php endif;?>
+
+            <?php $key = 'location';?>
+            <?php if ($post->$key): ?>
+            <li class="span2">
+            <span class="label"><?=__($key)?></span><p><?=$post->$key; ?></p>
+            </li>
+            <?php endif;?>
+
+            <?php $key = 'point';?>
+            <?php if ($post->$key): ?>
+            <li class="span2">
+            <span class="label"><?=__($key)?></span><p><?=$post->$key; ?>
+            <?php if ($post->point_type): ?>(<?=Model_Lookup::item('post_point_type', $post->point_type)?>)<?php endif;?></p>
+            </li>
+            <?php endif;?>
+
+            <?php $key = 'dive_time';?>
+            <?php if ($post->$key): ?>
+            <li class="span2">
+            <span class="label"><?=__($key)?></span><p><?=$post->$key;?> <?=__('min')?></p>
+            </li>
+            <?php endif;?>
+
+            <?php $key = 'entry';?>
+            <?php if ($post->$key): ?>
+            <li class="span2">
+            <span class="label"><?=__($key)?></span><p><?=nl2br($post->$key); ?></p>
+            </li>
+            <?php endif;?>
+
+            <?php $key = 'exit';?>
+            <?php if ($post->$key): ?>
+            <li class="span2">
+            <span class="label"><?=__($key)?></span><p><?=nl2br($post->$key); ?></p>
+            </li>
+            <?php endif;?>
+
+            <?php $key = 'depth_of_water_ave';?>
+            <?php if ($post->$key): ?>
+            <li class="span2">
+            <span class="label"><?=__($key)?></span><p><?=nl2br($post->$key); ?> m</p>
+            </li>
+            <?php endif;?>
+
+            <?php $key = 'depth_of_water_max';?>
+            <?php if ($post->$key): ?>
+            <li class="span2">
+            <span class="label"><?=__($key)?></span><p><?=nl2br($post->$key); ?> m</p>
+            </li>
+            <?php endif;?>
+
+            <?php $key = 'pressure_start';?>
+            <?php if ($post->$key): ?>
+            <li class="span2">
+            <span class="label"><?=__($key)?></span><p><?=nl2br($post->$key); ?> bar</p>
+            </li>
+            <?php endif;?>
+
+            <?php $key = 'pressure_end';?>
+            <?php if ($post->$key): ?>
+            <li class="span2">
+            <span class="label"><?=__($key)?></span><p><?=nl2br($post->$key); ?> bar</p>
+            </li>
+            <?php endif;?>
+
+            <?php $key = 'water_temp_bottom';?>
+            <?php if ($post->$key): ?>
+            <li class="span2">
+            <span class="label"><?=__($key)?></span><p><?=nl2br($post->$key); ?> ℃</p>
+            </li>
+            <?php endif;?>
+
+            <?php $key = 'air_temp';?>
+            <?php if ($post->$key): ?>
+            <li class="span2">
+            <span class="label"><?=__($key)?></span><p><?=nl2br($post->$key); ?> ℃</p>
+            </li>
+            <?php endif;?>
+
+            <?php $key = 'weather';?>
+            <?php if ($post->$key): ?>
+            <li class="span2">
+            <span class="label"><?=__($key)?></span><p><?=Model_Lookup::item('post_weather', $post->$key)?>
+            </p>
+            </li>
+            <?php endif;?>
+
+            <?php $key = 'suit';?>
+            <?php if ($post->$key): ?>
+            <li class="span2">
+            <span class="label"><?=__($key)?></span><p><?=Model_Lookup::item('post_suit', $post->$key)?>
+            <?php if ($post->suit_thickness): ?><?=$post->suit_thickness; ?> mm<? endif;?>
+            </p>
+            </li>
+            <?php endif;?>
+
+            <?php $key = 'weight';?>
+            <?php if ($post->$key): ?>
+            <li class="span2">
+            <span class="label"><?=__($key)?></span><p><?=nl2br($post->$key); ?> kg</p>
+            </li>
+            <?php endif;?>
+
+            <?php $key = 'tank';?>
+            <?php if ($post->$key): ?>
+            <li class="span2">
+            <span class="label"><?=__($key)?></span><p><?=Model_Lookup::item('post_tank', $post->$key)?>
+            <?php if ($post->tank_cap): ?><?=$post->tank_cap; ?> L<? endif;?>
+            </p>
+            </li>
+            <?php endif;?>
+
+            <?php $key = 'visibility';?>
+            <?php if ($post->$key): ?>
+            <li class="span2">
+            <span class="label"><?=__($key)?></span><p><?=nl2br($post->$key); ?></p>
+            </li>
+            <?php endif;?>
+        </ul>
+        <?php $key = 'report';?>
+        <?php if ($post->$key): ?>
+        <span class="label"><?=__($key)?></span><p><?=nl2br($post->$key); ?></p>
+        <?php endif;?>
+
+        <?php $key = 'comment';?>
+        <?php if ($post->$key): ?>
+        <span class="label"><?=__($key)?></span><p><?=nl2br($post->$key); ?></p>
+        <?php endif;?>
+
     </div>
-    <div class="span6">
-        <table class="table table-striped">
-            <?php if ($post->report): ?>
-            <tr>
-                <th>Report:</th>
-                <td><?php echo $post->report; ?></td>
-            </tr>
-            <?php endif; ?>
-            <?php if ($post->comment): ?>
-            <tr>
-                <th>Comment:</th>
-                <td><?php echo nl2br($post->comment); ?></td>
-            </tr>
-            <?php endif; ?>
-        </table>
+    <div class="span4">
+        <div class="row">
+            <div class="span1">
+                <img src="<?=$post->users->profile->image?>" class="img-polaroid">
+            </div>
+            <div class="span3">
+                <h2><a href="/user/<?=$post->users->username;?>"><?=$post->users->profile->full_name;?></a></h2>
+                </div>
+        </div>
+        <ul class="unstyled">
+            <li><i class="icon-camera"></i> <?=$post->users->profile->camera?></li>
+            <li><i class="icon-map-marker"></i> <?=$post->users->profile->location?></li>
+            <li><i class="icon-bookmark"></i> <a href="<?=$post->users->profile->website?>" target="_blank"><?=$post->users->profile->website?></a></li>
+            <li><a href="<?=$post->users->profile->twitter?>" class="twitter-follow-button" data-show-count="false" data-lang="ja">@<?=$post->users->username?>さんをフォロー</a>
+            </li>
+        </ul>
+        <hr>
+        <p>
+            <?= nl2br($post->users->profile->description);?>
+        </p>
+        <?php echo render('social_buttons'); ?>
+        <?php echo render('af_square'); ?>
     </div>
 </div>
 

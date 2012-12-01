@@ -4,11 +4,13 @@ class controller_log extends Controller_Base
     public function before()
     {
         parent::before();
+        \Lang::load('log');
     }
 
     public function action_view($id = null)
     {
         $data['post'] = Model_Post::find($id, array(
+            'related' => array('users'),
             'where' => $this->status_where,
         ));
 
@@ -16,7 +18,7 @@ class controller_log extends Controller_Base
             Response::redirect('welcome/404', 'location', 404);
         }
 
-        $this->template->title = "Log";
+        $this->template->title = " | " . $data['post']->date . 'のログ';
         $this->template->content = View::forge('log/view', $data);
     }
 
@@ -54,7 +56,8 @@ class controller_log extends Controller_Base
         }
 
         $this->template->set_global('fieldset', $fieldset, false);
-        $this->template->title = "Create Log";
+        $this->template->title = ' | ログを書く';
+        $this->template->set_global('title', 'ログを書く', false);
         $this->template->content = View::forge('log/create');
     }
 
@@ -93,7 +96,8 @@ class controller_log extends Controller_Base
 
         $data['post'] = $post;
         $this->template->set_global('fieldset', $fieldset, false);
-        $this->template->title      = "Edit Log";
+        $this->template->title = ' | ログを編集する';
+        $this->template->set_global('title', 'ログを編集する', false);
         $this->template->content    = View::forge('log/edit', $data);
     }
 
@@ -122,96 +126,96 @@ class controller_log extends Controller_Base
 
         $fieldset = ViewForm\Fieldset::forge();
 
-        $fieldset->add_text('serial_dive_no', 'Dive No')
+        $fieldset->add_text('serial_dive_no', __('serial_dive_no'), array('value' => Model_Post::get_last_serial_dive_no($this->current_user->id)))
             ->add_rule($zentohan)
             ->add_rule('valid_string', 'numeric')
             ->add_rule('max_length', 255);
 
-        $fieldset->add_text('date', 'Date')
+        $fieldset->add_text('date', __('date'))
             ->add_rule('required')
             ->add_rule($zentohan)
             ->add_rule('max_length', 10);
 
-        $fieldset->add_text('location', 'Location')
+        $fieldset->add_text('location', __('location'))
             ->add_rule($zentohan)
             ->add_rule('max_length', 255);
 
-        $fieldset->add_text('point', 'Point')
+        $fieldset->add_text('point', __('point'))
             ->add_rule($zentohan)
             ->add_rule('max_length', 255);
 
-        $fieldset->add_select('point_type', 'Point', Model_Lookup::items('post_point_type'))
+        $fieldset->add_select('point_type', __('point_type'), Model_Lookup::items('post_point_type'))
             ->add_rule('max_length', 8);
 
-        $fieldset->add_text('diving_shop', 'Diving Shop')
+        $fieldset->add_text('diving_shop', __('diving_shop'))
             ->add_rule($zentohan)
             ->add_rule('max_length', 255);
 
-        $fieldset->add_text('entry', 'Entry')
+        $fieldset->add_text('entry', __('entry'))
             ->add_rule($zentohan)
             ->add_rule('match_pattern', '/^(0[0-9]{1}|1{1}[0-9]{1}|2{1}[0-3]{1}):(0[0-9]{1}|[1-5]{1}[0-9]{1})$/')
             ->add_rule('max_length', 5);
 
-        $fieldset->add_text('pressure_start', 'Entry')
+        $fieldset->add_text('pressure_start', __('entry'))
             ->add_rule($zentohan)
             ->add_rule('valid_string', 'numeric')
             ->add_rule('max_length', 8);
 
-        $fieldset->add_text('exit', 'Exit')
+        $fieldset->add_text('exit', __('exit'))
             ->add_rule($zentohan)
             ->add_rule('match_pattern', '/^(0[0-9]{1}|1{1}[0-9]{1}|2{1}[0-3]{1}):(0[0-9]{1}|[1-5]{1}[0-9]{1})$/')
             ->add_rule('max_length', 5);
 
-        $fieldset->add_text('pressure_end', 'Exit')
+        $fieldset->add_text('pressure_end', __('exit'))
             ->add_rule($zentohan)
             ->add_rule('valid_string', 'numeric')
             ->add_rule('max_length', 8);
 
-        $fieldset->add_text('depth_of_water_ave', 'Ave')
+        $fieldset->add_text('depth_of_water_ave', __('depth_of_water_ave'))
             ->add_rule($zentohan)
             ->add_rule('valid_string', 'float')
             ->add_rule('max_length', 8);
 
-        $fieldset->add_text('depth_of_water_max', 'Max')
+        $fieldset->add_text('depth_of_water_max', __('depth_of_water_max'))
             ->add_rule($zentohan)
             ->add_rule('valid_string', 'float')
             ->add_rule('max_length', 8);
 
-        $fieldset->add_text('water_temp_bottom', 'Water Temp')
+        $fieldset->add_text('water_temp_bottom', __('water_temp_bottom'))
             ->add_rule($zentohan)
             ->add_rule('valid_string', 'float')
             ->add_rule('max_length', 8);
 
-        $fieldset->add_text('air_temp', 'Air Temp')
+        $fieldset->add_text('air_temp', __('air_temp'))
             ->add_rule($zentohan)
             ->add_rule('valid_string', 'float')
             ->add_rule('max_length', 8);
 
-        $fieldset->add_select('weather', 'Weather', Model_Lookup::items('post_weather'))
+        $fieldset->add_select('weather', __('weather'), Model_Lookup::items('post_weather'))
             ->add_rule('max_length', 8);
 
-        $fieldset->add_select('suit', 'Suit', Model_Lookup::items('post_suit'))
+        $fieldset->add_select('suit', __('suit'), Model_Lookup::items('post_suit'))
             ->add_rule('max_length', 8);
 
-        $fieldset->add_text('suit_thickness', 'Suit')
+        $fieldset->add_text('suit_thickness', __('suit'))
             ->add_rule($zentohan)
             ->add_rule('valid_string', 'numeric')
             ->add_rule('max_length', 8);
 
-        $fieldset->add_text('weight', 'Weight')
+        $fieldset->add_text('weight', __('weight'))
             ->add_rule($zentohan)
             ->add_rule('valid_string', 'float')
             ->add_rule('max_length', 8);
 
-        $fieldset->add_select('tank', 'Tank', Model_Lookup::items('post_tank'))
+        $fieldset->add_select('tank', __('tank'), Model_Lookup::items('post_tank'))
             ->add_rule('max_length', 8);
 
-        $fieldset->add_text('tank_cap', 'Tank')
+        $fieldset->add_text('tank_cap', __('tank_cap'))
             ->add_rule($zentohan)
             ->add_rule('valid_string', 'numeric')
             ->add_rule('max_length', 8);
 
-        $fieldset->add_text('visibility', 'Visibility')
+        $fieldset->add_text('visibility', __('visibility'))
             ->add_rule($zentohan)
             ->add_rule('max_length', 255);
 
@@ -223,15 +227,15 @@ class controller_log extends Controller_Base
             ->add_rule('max_length', 255);
              */
 
-        $fieldset->add_textarea('report', 'Find Fish')
+        $fieldset->add_textarea('report', __('report'))
             ->add_rule($zentohan)
             ->add_rule('max_length', 9999);
 
-        $fieldset->add_textarea('comment', 'Comment')
+        $fieldset->add_textarea('comment', __('comment'))
             ->add_rule($zentohan)
             ->add_rule('max_length', 9999);
 
-        $fieldset->add_select('status', 'Status', Model_Lookup::items('post_status', false))
+        $fieldset->add_select('status', __('status'), Model_Lookup::items('post_status', false))
             ->add_rule('max_length', 8);
 
         return $fieldset;

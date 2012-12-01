@@ -116,6 +116,17 @@ class Model_Post extends \Orm\Model
         return intval((strtotime($end) - strtotime($first)) / (60));
     }
 
+    public static function get_last_serial_dive_no($user_id) {
+
+        $res = DB::select(array(DB::expr('max(serial_dive_no)'), 'last_dive_no'))
+            ->from('posts')
+            ->where('user_id', '=', $user_id)
+            ->limit(1)
+            ->execute()
+            ->as_array();
+        return isset($res[0]['last_dive_no']) ? $res[0]['last_dive_no'] + 1 : 1;
+    }
+
     public static function get_first_date($username) {
 
         $res = DB::select(array(DB::expr('min(date)'), 'date'))

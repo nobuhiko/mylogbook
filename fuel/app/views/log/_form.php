@@ -4,18 +4,23 @@ $(document).ready(function() {
         tags:<?php echo Model_Creature::getList(); ?>,
             tokenSeparators: [",", " "]});
 
-        var ds = <?php echo Model_Post::getTypeaheadList('diving_shop'); ?>.sort();
-        var location = <?php echo Model_Post::getTypeaheadList('location'); ?>.sort();
-        var point = <?php echo Model_Post::getTypeaheadList('point'); ?>.sort();
-        $('#form_diving_shop').typeahead({source: ds, items:10});
-        $('#form_location').typeahead({source: location, items:10});
-        $('#form_point').typeahead({source: point, items:10});
+    $("#form_diving_shop").select2({
+        tags:<?php echo Model_Post::getTypeaheadList('diving_shop'); ?>,
+            tokenSeparators: [",", " "]});
+
+    $("#form_location").select2({
+        tags:<?php echo Model_Post::getTypeaheadList('location'); ?>,
+            tokenSeparators: [",", " "]});
+
+    $("#form_point").select2({
+        tags:<?php echo Model_Post::getTypeaheadList('point'); ?>,
+            tokenSeparators: [",", " "]});
 });
 </script>
 
 <?php echo Form::open(array('class' => 'form-horizontal')); ?>
 <fieldset>
-    <legend>Create Log</legend>
+    <legend><?= $title ?></legend>
     <?php echo render('error'); ?>
 
     <?php $field_name = 'serial_dive_no'; ?>
@@ -40,7 +45,7 @@ $(document).ready(function() {
     <div class="control-group <?php if($fieldset->field($field_name)->has_error()):?>error<?php endif;?>">
         <?= $fieldset->field($field_name)->label_text(array('class'=>"control-label")) ?>
         <div class="controls">
-            <?=$fieldset->field($field_name)->field_text(array('class'=>'span4','data-provide' => 'typeahead', 'autocomplete' => 'off'))?>
+            <?=$fieldset->field($field_name)->field_text(array('style' => 'width:375px'))?>
             <span class="help-inline"><?= $fieldset->field($field_name)->error_text()?></span>
         </div>
     </div>
@@ -49,7 +54,7 @@ $(document).ready(function() {
     <div class="control-group <?php if($fieldset->field($field_name)->has_error()):?>error<?php endif;?>">
         <?= $fieldset->field($field_name)->label_text(array('class'=>"control-label")) ?>
         <div class="controls">
-            <?=$fieldset->field($field_name)->field_text(array('class'=>'span4','data-provide' => 'typeahead', 'autocomplete' => 'off'))?>
+            <?=$fieldset->field($field_name)->field_text(array('style' => 'width:375px'))?>
             <span class="help-inline"><?= $fieldset->field($field_name)->error_text()?></span>
         </div>
     </div>
@@ -66,7 +71,7 @@ $(document).ready(function() {
     <div class="control-group <?php if($fieldset->field($field_name)->has_error()):?>error<?php endif;?>">
         <?= $fieldset->field($field_name)->label_text(array('class'=>"control-label")) ?>
         <div class="controls">
-            <?=$fieldset->field($field_name)->field_text(array('class'=>'span4','data-provide' => 'typeahead', 'autocomplete' => 'off'))?>
+            <?=$fieldset->field($field_name)->field_text(array('style' => 'width:375px'))?>
             <span class="help-inline"><?= $fieldset->field($field_name)->error_text()?></span>
         </div>
     </div>
