@@ -49,6 +49,13 @@ $(function(){
 })(this, document);
 </script>
 
+  <meta property="og:title" content="<?=$title?>">
+<meta property="og:type" content="website">
+<meta property="og:url" content="<?=Uri::current()?>">
+<meta property="og:image" content="<?=Uri::base(false);?>assets/img/title.jpg">
+<meta property="og:site_name" content="僕のログブック">
+<meta property="og:locale" content="ja">
+<meta property="fb:app_id" content="469589996416610">
     </head>
     <body>
       <div class="navbar navbar-inverse navbar-fixed-top">
