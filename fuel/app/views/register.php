@@ -56,7 +56,7 @@
     <body>
 
         <div class="container">
-            <?php echo Form::open(null, array('id' => 'register', 'class' => 'form-signin')); ?>
+            <?php echo Form::open(array('id' => 'register', 'class' => 'form-signin')); ?>
                 <h2 class="form-signin-heading">ユーザー登録</h2>
 
 <?php if (isset($error)): ?>
@@ -67,7 +67,7 @@
 <label for="email">Email</label>
 <?php echo Form::input('email', $user->email) ?>
 </p>
-<?php echo Form::submit('submit', null, array('class' => 'btn btn-large btn-primary')) ?>
+<?php echo Form::submit('submit', '登録', array('class' => 'btn btn-large btn-primary')) ?>
 
 <?php echo Form::close() ?>
 
