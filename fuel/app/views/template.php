@@ -12,6 +12,7 @@
       }
     </style>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-site-verification" content="_UPWDoKwABDx9Ij0-VXbrLhzq4atj_ubT98HPsvkuB0">
     <?php echo Asset::css('bootstrap-responsive.css'); ?>
 
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
