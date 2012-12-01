@@ -2,19 +2,19 @@
 $(document).ready(function() {
     $("#form_report").select2({
         tags:<?php echo Model_Creature::getList(); ?>,
-            tokenSeparators: [",", " "]});
+            tokenSeparators: [","]});
 
     $("#form_diving_shop").select2({
         tags:<?php echo Model_Post::getTypeaheadList('diving_shop'); ?>,
-            tokenSeparators: [",", " "]});
+            tokenSeparators: [","]});
 
     $("#form_location").select2({
         tags:<?php echo Model_Post::getTypeaheadList('location'); ?>,
-            tokenSeparators: [",", " "]});
+            tokenSeparators: [","]});
 
     $("#form_point").select2({
         tags:<?php echo Model_Post::getTypeaheadList('point'); ?>,
-            tokenSeparators: [",", " "]});
+            tokenSeparators: [","]});
 });
 </script>
 
