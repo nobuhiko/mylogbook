@@ -2,7 +2,7 @@
 
 class controller_admin extends Controller_Base
 {
-    public $template = 'template';
+    public $template = 'admin/template';
 
     public function before()
     {
@@ -16,7 +16,7 @@ class controller_admin extends Controller_Base
     public function action_login()
     {
         // Already logged in
-        Auth::check() and Response::redirect('admin');
+        Auth::member(100) and Response::redirect('admin');
 
         $val = Validation::forge();
 

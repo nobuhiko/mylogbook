@@ -12,8 +12,6 @@ class controller_admin_posts extends Controller_Admin
         );
         Pagination::set_config($config);
         $data['posts'] = Model_Post::find('all', array(
-            //'where'     => array('user_id'          => $this->current_user->id),
-            'order_by'  => array('serial_dive_no'   => 'desc'),
             'limit'     => Pagination::$per_page,
             'offset'    => Pagination::$offset,
         ));
@@ -25,9 +23,7 @@ class controller_admin_posts extends Controller_Admin
 
     public function action_view($id = null)
     {
-        $data['post'] = Model_Post::find($id, array(
-            'where' => array('user_id' => $this->current_user->id),
-        ));
+        $data['post'] = Model_Post::find($id);
 
         $this->template->title = "Post";
         $this->template->content = View::forge('admin/posts/view', $data);
@@ -36,15 +32,26 @@ class controller_admin_posts extends Controller_Admin
 
     public function action_create()
     {
+
+        $fieldset = Fieldset::forge()->add_model('Model_Post');
+        $form     = $fieldset->form();
+
+        $form->add('submit', '', array('type' => 'submit', 'value' => 'Add New Post', 'class' => 'btn btn-large'));
+
         if (Input::method() == 'POST') {
-            $val = Model_Post::validate('create');
 
-            if ($val->run()) {
+            if($fieldset->validation()->run() == true) {
+                $fields = $fieldset->validated();
+
                 $post = Model_Post::forge();
-                $post->serial_dive_no = Input::post('serial_dive_no');
-                $this->_form($post);
+                foreach($fields as $key => $value) {
+                    $post->$key = $value;
+                }
 
-                if ($post and $post->save()) {
+                $post->dive_time = Model_Post::calc_diff_of_time($post->exit, $post->entry);
+                $post->creatures = Model_Creature::parseCreatures(Input::post('report'));
+
+                if ($post->save()) {
                     Session::set_flash('success', e('Added post #'.$post->id.'.'));
 
                     Response::redirect('admin/posts');
@@ -56,6 +63,7 @@ class controller_admin_posts extends Controller_Admin
             }
         }
 
+        $this->template->set_global('form', $form->build(), false);
         $this->template->title = "Posts";
         $this->template->content = View::forge('admin/posts/create');
 
