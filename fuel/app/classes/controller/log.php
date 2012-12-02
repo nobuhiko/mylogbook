@@ -233,6 +233,7 @@ class controller_log extends Controller_Base
 
         $fieldset->add_textarea('comment', __('comment'))
             ->add_rule($zentohan)
+            ->add_rule('strip_tags')
             ->add_rule('max_length', 9999);
 
         $fieldset->add_select('status', __('status'), Model_Lookup::items('post_status', false))
