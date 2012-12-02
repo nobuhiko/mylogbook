@@ -7,7 +7,7 @@
             <div class="span3">
             <h2><?=$user->profiles->full_name;?></h2>
             <?php if (Auth::check() and $user->username == $current_user->username)
-                    echo Html::anchor('setting/profiles', 'プロフィールを編集する') ?>
+                    echo Html::anchor('setting/profile', 'プロフィールを編集する') ?>
             </div>
         </div>
 
