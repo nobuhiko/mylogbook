@@ -2,12 +2,12 @@
     <div class="span4">
         <div class="row">
             <div class="span1">
-                <img src="<?=$user->profile->image?>" class="img-polaroid">
+                <img src="<?=$user->profiles->image?>" class="img-polaroid">
             </div>
             <div class="span3">
-            <h2><?=$user->profile->full_name;?></h2>
+            <h2><?=$user->profiles->full_name;?></h2>
             <?php if (Auth::check() and $user->username == $current_user->username)
-                    echo Html::anchor('setting/profile', 'プロフィールを編集する') ?>
+                    echo Html::anchor('setting/profiles', 'プロフィールを編集する') ?>
             </div>
         </div>
 
@@ -26,15 +26,15 @@
             <li><i class="icon-calendar"></i> <small>Started on </small><?= $first_date ?></li>
             <li><i class="icon-time"></i> <?= sprintf("%02dh %02dm", floor($total_dive_time/60), $total_dive_time%60); ?></li>
             <li><i class="icon-home"></i> <?= $home_location ?></li>
-            <li><i class="icon-camera"></i> <?=$user->profile->camera?></li>
-            <li><i class="icon-map-marker"></i> <?=$user->profile->location?></li>
-            <li><i class="icon-bookmark"></i> <a href="<?=$user->profile->website?>" target="_blank"><?=$user->profile->website?></a></li>
-            <li><a href="<?=$user->profile->twitter?>" class="twitter-follow-button" data-show-count="false" data-lang="ja">@<?=$user->username?>さんをフォロー</a>
+            <li><i class="icon-camera"></i> <?=$user->profiles->camera?></li>
+            <li><i class="icon-map-marker"></i> <?=$user->profiles->location?></li>
+            <li><i class="icon-bookmark"></i> <a href="<?=$user->profiles->website?>" target="_blank"><?=$user->profiles->website?></a></li>
+            <li><a href="<?=$user->profiles->twitter?>" class="twitter-follow-button" data-show-count="false" data-lang="ja">@<?=$user->username?>さんをフォロー</a>
             </li>
         </ul>
         <hr>
         <p>
-            <?= nl2br($user->profile->description);?>
+            <?= nl2br($user->profiles->description);?>
         </p>
         <hr>
         <?php echo render('social_buttons'); ?>

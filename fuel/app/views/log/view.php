@@ -149,22 +149,22 @@
     <div class="span4">
         <div class="row">
             <div class="span1">
-                <img src="<?=$post->users->profile->image?>" class="img-polaroid">
+                <img src="<?=$post->users->profiles->image?>" class="img-polaroid">
             </div>
             <div class="span3">
-                <h2><a href="/user/<?=$post->users->username;?>"><?=$post->users->profile->full_name;?></a></h2>
+                <h2><a href="/user/<?=$post->users->username;?>"><?=$post->users->profiles->full_name;?></a></h2>
                 </div>
         </div>
         <ul class="unstyled">
-            <li><i class="icon-camera"></i> <?=$post->users->profile->camera?></li>
-            <li><i class="icon-map-marker"></i> <?=$post->users->profile->location?></li>
-            <li><i class="icon-bookmark"></i> <a href="<?=$post->users->profile->website?>" target="_blank"><?=$post->users->profile->website?></a></li>
-            <li><a href="<?=$post->users->profile->twitter?>" class="twitter-follow-button" data-show-count="false" data-lang="ja">@<?=$post->users->username?>さんをフォロー</a>
+            <li><i class="icon-camera"></i> <?=$post->users->profiles->camera?></li>
+            <li><i class="icon-map-marker"></i> <?=$post->users->profiles->location?></li>
+            <li><i class="icon-bookmark"></i> <a href="<?=$post->users->profiles->website?>" target="_blank"><?=$post->users->profiles->website?></a></li>
+            <li><a href="<?=$post->users->profiles->twitter?>" class="twitter-follow-button" data-show-count="false" data-lang="ja">@<?=$post->users->username?>さんをフォロー</a>
             </li>
         </ul>
         <hr>
         <p>
-            <?= nl2br($post->users->profile->description);?>
+            <?= nl2br($post->users->profiles->description);?>
         </p>
         <?php echo render('social_buttons'); ?>
         <?php echo render('af_square'); ?>
