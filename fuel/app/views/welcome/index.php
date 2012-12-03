@@ -11,6 +11,9 @@
     .fb_iframe_widget {
         background-color:#fff;
     }
+    .fb_edge_widget_with_comment {
+        background-color:transparent;
+    }
 </style>
 
 <div class="row">
