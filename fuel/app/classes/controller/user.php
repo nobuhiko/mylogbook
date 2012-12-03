@@ -41,15 +41,16 @@ class controller_user extends Controller_Base
         );
         Pagination::set_config($config);
 
-        $data['posts'] = Model_Post::find('all', array(
-            'related'   => array('users'),
-            'where'     => array_merge(array(array('users.username', $this->username)), $this->status_where),
-            'order_by'  => array('serial_dive_no' => 'desc'),
-            'limit'     => Pagination::$per_page,
-            'offset'    => Pagination::$offset,
-        ));
-        $data['pager'] = Pagination::create_links();
+        $data['posts'] = Model_Post::query()
+            ->related('users', array(
+                'where'     => array(array('users.username', $this->username)),
+                'limit'     => Pagination::$per_page,
+                'offset'    => Pagination::$offset,
+            ))
+            ->order_by('serial_dive_no','desc')
+            ->get();
 
+        $data['pager'] = Pagination::create_links();
         $this->template->content->content = View::forge('user/log', $data, false);
 
         return $this->template;
