@@ -1,5 +1,4 @@
 <?php
-
 class controller_user extends Controller_Base
 {
 
@@ -41,14 +40,31 @@ class controller_user extends Controller_Base
         );
         Pagination::set_config($config);
 
-        $data['posts'] = Model_Post::query()
-            ->related('users', array(
-                'where'     => array(array('users.username', $this->username)),
-                'limit'     => Pagination::$per_page,
-                'offset'    => Pagination::$offset,
-            ))
-            ->order_by('serial_dive_no','desc')
-            ->get();
+        if ($this->current_user) {
+            $data['posts'] = DB::select()
+                ->from('posts')
+                ->join('users', 'LEFT')
+                ->on('posts.user_id', '=', 'users.id')
+                ->where('username', '=', $this->username)
+                ->and_where('status', '!=', 'null')
+                ->order_by('serial_dive_no','desc')
+                ->limit(Pagination::$per_page)
+                ->offset(Pagination::$offset)
+                ->as_object()
+                ->execute();
+        } else {
+            $data['posts'] = DB::select()
+                ->from('posts')
+                ->join('users', 'LEFT')
+                ->on('posts.user_id', '=', 'users.id')
+                ->where('username', '=', $this->username)
+                ->and_where('status', self::STATUS_DISP)
+                ->order_by('serial_dive_no','desc')
+                ->limit(Pagination::$per_page)
+                ->offset(Pagination::$offset)
+                ->as_object()
+                ->execute();
+        }
 
         $data['pager'] = Pagination::create_links();
         $this->template->content->content = View::forge('user/log', $data, false);
