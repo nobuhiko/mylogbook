@@ -9,15 +9,14 @@ class controller_user extends Controller_Base
         $this->template = View::forge('template');
 
         // todo related
-        $data['user'] = Model_User::find_by_username($this->username);
+        $this->user = $data['user'] = Model_User::find_by_username($this->username);
 
         if (empty($data['user'])) {
             Response::redirect('welcome/404', 'location', 404);
         }
 
         $data['log'] = Model_Post::count(array(
-            'related'   => array('users'),
-            'where'     => array_merge(array(array('users.username', $this->username)), $this->status_where),
+            'where'     => array_merge(array(array('user_id', $this->user->id)), $this->status_where),
         ));
         $this->log_count = $data['log'];
 
@@ -40,19 +39,13 @@ class controller_user extends Controller_Base
         );
         Pagination::set_config($config);
 
-        if ($this->current_user) {
-            $data['posts'] = DB::select()
-                ->from('posts')
-                ->join('users', 'LEFT')
-                ->on('posts.user_id', '=', 'users.id')
-                ->where('username', '=', $this->username)
-                ->and_where('status', '!=', 'null')
-                ->order_by('serial_dive_no','desc')
-                ->limit(Pagination::$per_page)
-                ->offset(Pagination::$offset)
-                ->as_object()
-                ->execute();
-        } else {
+        $data['posts'] = Model_Post::find('all', array(
+            'where'     => array_merge(array(array('user_id', $this->user->id)), $this->status_where),
+            'order_by'  => array(array('serial_dive_no','desc')),
+            'limit'     => Pagination::$per_page,
+            'offset'    => Pagination::$offset,
+        ));
+        /*
             $data['posts'] = DB::select()
                 ->from('posts')
                 ->join('users', 'LEFT')
@@ -64,7 +57,7 @@ class controller_user extends Controller_Base
                 ->offset(Pagination::$offset)
                 ->as_object()
                 ->execute();
-        }
+         */
 
         $data['pager'] = Pagination::create_links();
         $this->template->content->content = View::forge('user/log', $data, false);
