@@ -50,7 +50,7 @@ class controller_user extends Controller_Base
 
     public function action_creatures() {
 
-        $data['reports'] = Model_Post::summary_report($this->username);
+        $data['reports'] = Model_Post::summary_report($this->user->id);
         $this->template->content->content = View::forge('user/creatures', $data);
 
         return $this->template;
