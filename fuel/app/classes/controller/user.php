@@ -20,10 +20,7 @@ class controller_user extends Controller_Base
         ));
         $this->log_count = $data['log'];
 
-        $data['total_dive_time'] = Model_Post::summary_dive_time($this->username);
-        $data['home_location'] = Model_Post::get_home_location($this->username);
-        $data['first_date'] = Model_Post::get_first_date($this->username);
-        $data['creature'] = Model_Post::summary_report_count($this->username);
+        Model_Post::summary_userdata($data, $this->user->id);
 
         $this->template->content = View::forge('user/profile', $data); // 共通tpl
         $this->template->title = ' | ' . $this->username;
@@ -31,7 +28,6 @@ class controller_user extends Controller_Base
 
     public function action_log()
     {
-
         $config = array(
             'pagination_url' => 'user/' . $this->username,
             'total_items'    => $this->log_count,
@@ -45,19 +41,6 @@ class controller_user extends Controller_Base
             'limit'     => Pagination::$per_page,
             'offset'    => Pagination::$offset,
         ));
-        /*
-            $data['posts'] = DB::select()
-                ->from('posts')
-                ->join('users', 'LEFT')
-                ->on('posts.user_id', '=', 'users.id')
-                ->where('username', '=', $this->username)
-                ->and_where('status', self::STATUS_DISP)
-                ->order_by('serial_dive_no','desc')
-                ->limit(Pagination::$per_page)
-                ->offset(Pagination::$offset)
-                ->as_object()
-                ->execute();
-         */
 
         $data['pager'] = Pagination::create_links();
         $this->template->content->content = View::forge('user/log', $data, false);
