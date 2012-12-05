@@ -4,21 +4,29 @@ $(document).ready(function() {
         tags:<?php echo Model_Creature::getList(); ?>,
             tokenSeparators: [","]});
 
-    $("#form_diving_shop").select2({
-        tags:<?php echo Model_Post::getTypeaheadList('diving_shop'); ?>,
-            tokenSeparators: [","]});
+        $("#form_diving_shop").select2({
+            tags:<?php echo Model_Post::getTypeaheadList('diving_shop'); ?>,
+                tokenSeparators: [","]});
 
-    $("#form_location").select2({
-        tags:<?php echo Model_Post::getTypeaheadList('location'); ?>,
-            tokenSeparators: [","]});
+            $("#form_location").select2({
+                tags:<?php echo Model_Post::getTypeaheadList('location'); ?>,
+                    tokenSeparators: [","]});
 
-    $("#form_point").select2({
-        tags:<?php echo Model_Post::getTypeaheadList('point'); ?>,
-            tokenSeparators: [","]});
+                $("#form_point").select2({
+                    tags:<?php echo Model_Post::getTypeaheadList('point'); ?>,
+                        tokenSeparators: [","]});
+});
+
+
+$(function() {
+    $("#before_one").click(function(){
+        location.href = "<?=Uri::create('log/create/');?>" + $("#form_serial_dive_no").val();
+        return false;
+    });
 });
 </script>
 
-<?php echo Form::open(array('class' => 'form-horizontal')); ?>
+<?php echo Form::open(array('name' =>'form', 'class' => 'form-horizontal')); ?>
 <fieldset>
     <legend><?= $title ?></legend>
     <?php echo render('error'); ?>
@@ -28,7 +36,7 @@ $(document).ready(function() {
         <?= $fieldset->field($field_name)->label_text(array('class'=>"control-label")) ?>
         <div class="controls">
             <?=$fieldset->field($field_name)->field_text(array('class'=>'span4'))?>
-            <span class="help-inline"><?= $fieldset->field($field_name)->error_text()?></span>
+            <span class="help-inline"><a href="#" id="before_one" class="btn btn-small btn-primary">1本前のデータを利用する</a><?= $fieldset->field($field_name)->error_text()?></span>
         </div>
     </div>
 
@@ -88,8 +96,8 @@ $(document).ready(function() {
     <div class="control-group <?php if($fieldset->field($field_name)->has_error()):?>error<?php endif;?>">
         <div class="controls">
             <div class="input-append">
-            <?=$fieldset->field($field_name)->field_text(array('class'=>'span2', 'placeholder' => 'Air', 'id' => 'appendedInput'))?>
-            <span class="add-on">bar</span>
+                <?=$fieldset->field($field_name)->field_text(array('class'=>'span2', 'placeholder' => 'Air', 'id' => 'appendedInput'))?>
+                <span class="add-on">bar</span>
             </div>
             <span class="help-inline"><?= $fieldset->field($field_name)->error_text()?></span>
         </div>
@@ -108,8 +116,8 @@ $(document).ready(function() {
     <div class="control-group <?php if($fieldset->field($field_name)->has_error()):?>error<?php endif;?>">
         <div class="controls">
             <div class="input-append">
-            <?=$fieldset->field($field_name)->field_text(array('class'=>'span2', 'placeholder' => 'Air', 'id' => 'appendedInput'))?>
-            <span class="add-on">bar</span>
+                <?=$fieldset->field($field_name)->field_text(array('class'=>'span2', 'placeholder' => 'Air', 'id' => 'appendedInput'))?>
+                <span class="add-on">bar</span>
             </div>
             <span class="help-inline"><?= $fieldset->field($field_name)->error_text()?></span>
         </div>
@@ -120,8 +128,8 @@ $(document).ready(function() {
         <?= $fieldset->field($field_name)->label_text(array('class'=>"control-label")) ?>
         <div class="controls">
             <div class="input-append">
-            <?=$fieldset->field($field_name)->field_text(array('class'=>'span2', 'placeholder' => '', 'id' => 'appendedInput'))?>
-            <span class="add-on">m</span>
+                <?=$fieldset->field($field_name)->field_text(array('class'=>'span2', 'placeholder' => '', 'id' => 'appendedInput'))?>
+                <span class="add-on">m</span>
             </div>
             <span class="help-inline"><?= $fieldset->field($field_name)->error_text()?></span>
         </div>
@@ -133,8 +141,8 @@ $(document).ready(function() {
         <?= $fieldset->field($field_name)->label_text(array('class'=>"control-label")) ?>
         <div class="controls">
             <div class="input-append">
-            <?=$fieldset->field($field_name)->field_text(array('class'=>'span2', 'placeholder' => '', 'id' => 'appendedInput'))?>
-            <span class="add-on">℃</span>
+                <?=$fieldset->field($field_name)->field_text(array('class'=>'span2', 'placeholder' => '', 'id' => 'appendedInput'))?>
+                <span class="add-on">℃</span>
             </div>
             <span class="help-inline"><?= $fieldset->field($field_name)->error_text()?></span>
         </div>
@@ -155,8 +163,8 @@ $(document).ready(function() {
     <div class="control-group <?php if($fieldset->field($field_name)->has_error()):?>error<?php endif;?>">
         <div class="controls">
             <div class="input-append">
-            <?=$fieldset->field($field_name)->field_text(array('class'=>'span2', 'placeholder' => '', 'id' => 'appendedInput'))?>
-            <span class="add-on">mm</span>
+                <?=$fieldset->field($field_name)->field_text(array('class'=>'span2', 'placeholder' => '', 'id' => 'appendedInput'))?>
+                <span class="add-on">mm</span>
             </div>
             <span class="help-inline"><?= $fieldset->field($field_name)->error_text()?></span>
         </div>
@@ -167,8 +175,8 @@ $(document).ready(function() {
         <?= $fieldset->field($field_name)->label_text(array('class'=>"control-label")) ?>
         <div class="controls">
             <div class="input-append">
-            <?=$fieldset->field($field_name)->field_text(array('class'=>'span2', 'placeholder' => '', 'id' => 'appendedInput'))?>
-            <span class="add-on">kg</span>
+                <?=$fieldset->field($field_name)->field_text(array('class'=>'span2', 'placeholder' => '', 'id' => 'appendedInput'))?>
+                <span class="add-on">kg</span>
             </div>
             <span class="help-inline"><?= $fieldset->field($field_name)->error_text()?></span>
         </div>
@@ -187,8 +195,8 @@ $(document).ready(function() {
     <div class="control-group <?php if($fieldset->field($field_name)->has_error()):?>error<?php endif;?>">
         <div class="controls">
             <div class="input-append">
-            <?=$fieldset->field($field_name)->field_text(array('class'=>'span2', 'placeholder' => '', 'id' => 'appendedInput'))?>
-            <span class="add-on">L</span>
+                <?=$fieldset->field($field_name)->field_text(array('class'=>'span2', 'placeholder' => '', 'id' => 'appendedInput'))?>
+                <span class="add-on">L</span>
             </div>
             <span class="help-inline"><?= $fieldset->field($field_name)->error_text()?></span>
         </div>

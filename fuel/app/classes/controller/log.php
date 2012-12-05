@@ -22,13 +22,24 @@ class controller_log extends Controller_Base
         $this->template->content = View::forge('log/view', $data);
     }
 
-    public function action_create()
+    public function action_create($id = null)
     {
         if ($this->current_user == null) {
             Response::redirect('welcome/404', 'location', 404);
         }
 
-        $fieldset = $this->_fieldset()->repopulate();
+        if ($id) {
+            $post = Model_Post::query()
+                ->select('date', 'location', 'point', 'point_type', 'diving_shop', 'air_temp', 'suit', 'suit_thickness', 'weight', 'tank', 'tank_cap', 'visibility')
+                ->where('serial_dive_no', $id-1)
+                ->where('user_id', $this->current_user->id)
+                ->get_one();
+            $post->serial_dive_no = $id;
+
+            $fieldset = $this->_fieldset()->populate($post, true);
+        } else {
+            $fieldset = $this->_fieldset()->repopulate();
+        }
 
         if (Input::method() == 'POST') {
 
