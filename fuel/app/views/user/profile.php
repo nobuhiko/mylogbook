@@ -37,6 +37,13 @@
             <?= nl2br($user->profiles->description);?>
         </p>
         <hr>
+        <?php if (is_array($yearly)) : ?>
+        <ul class="unstyled">
+        <?php foreach($yearly as $year): ?>
+        <li><?=$year['year']?> (<?=$year['count']?>)<//li>
+        <?php endforeach;?>
+        </ul>
+        <?php endif;?>
         <?php echo render('social_buttons'); ?>
         <?php echo render('af_square'); ?>
     </div>

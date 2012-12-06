@@ -81,6 +81,7 @@ class Model_Post extends \Orm\Model
         $data['home_location'] = Model_Post::get_home_location($user_id);
         $data['first_date'] = Model_Post::get_first_date($user_id);
         $data['creature'] = Model_Post::summary_report_count($user_id);
+        $data['yearly'] = Model_Post::get_yearly($user_id);
     }
 
     public static function get_last_serial_dive_no($user_id) {
@@ -95,6 +96,23 @@ class Model_Post extends \Orm\Model
     }
 
     const STATUS_DISP = '2'; // post.status
+
+    public static function get_yearly($user_id) {
+
+        $res = DB::select_array(array(
+                array(DB::expr('count(id)'), 'count'),
+                array(DB::expr("DATE_FORMAT( date,  '%Y年')"), 'year')
+            ))
+            ->from('posts')
+            ->where('user_id', '=', $user_id)
+            ->and_where('status', self::STATUS_DISP)
+            ->group_by('year')
+            ->order_by('year', 'desc')
+            ->execute()
+            ->as_array();
+
+        return $res;
+    }
 
     public static function get_first_date($user_id) {
 
