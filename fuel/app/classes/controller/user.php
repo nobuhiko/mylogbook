@@ -75,6 +75,34 @@ class controller_user extends Controller_Base
         return $this->template;
     }
 
+
+    public function action_location()
+    {
+        $config = array(
+            'pagination_url' => 'user/' . $this->username . '/year/' . $this->param('location'),
+            //'total_items'    => $this->log_count,
+            'uri_segment'    => 5,
+        );
+        //Pagination::set_config($config);
+
+        $data['posts'] = DB::select()
+            ->from('posts')
+            ->where('user_id', '=', $this->user->id)
+            ->and_where('status', self::STATUS_DISP)
+            ->and_where('location', $this->param('location'))
+            ->order_by('serial_dive_no', 'desc')
+          //  ->limit(Pagination::$per_page)
+          //  ->offset(Pagination::$offset)
+            ->as_object()
+            ->execute();
+
+        $data['pager'] = Pagination::create_links();
+        $this->template->content->content = View::forge('user/log', $data, false);
+
+        return $this->template;
+    }
+
+
     public function action_creatures() {
 
         $data['reports'] = Model_Post::summary_report($this->user->id);

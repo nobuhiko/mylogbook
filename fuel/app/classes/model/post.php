@@ -78,10 +78,10 @@ class Model_Post extends \Orm\Model
     // profile data
     public static function summary_userdata(&$data, $user_id) {
         $data['total_dive_time'] = Model_Post::summary_dive_time($user_id);
-        $data['home_location'] = Model_Post::get_home_location($user_id);
         $data['first_date'] = Model_Post::get_first_date($user_id);
         $data['creature'] = Model_Post::summary_report_count($user_id);
         $data['yearly'] = Model_Post::get_yearly($user_id);
+        $data['location'] = Model_Post::summary_location($user_id);
     }
 
     public static function get_last_serial_dive_no($user_id) {
@@ -128,20 +128,6 @@ class Model_Post extends \Orm\Model
         return isset($res[0]['date']) ? $res[0]['date'] : null;
     }
 
-    public static function get_home_location($user_id) {
-
-        $res = DB::select('location')
-            ->from('posts')
-            ->where('user_id', '=', $user_id)
-            ->and_where('status', self::STATUS_DISP)
-            ->group_by('location')
-            ->order_by(DB::expr('count(location)'), 'DESC')
-            ->limit(1)
-            ->execute()
-            ->as_array();
-
-        return isset($res[0]['location']) ? $res[0]['location'] : null;
-    }
 
     public static function summary_dive_time($user_id) {
 
@@ -155,9 +141,23 @@ class Model_Post extends \Orm\Model
         return isset($res[0]['total_dive_time']) ? $res[0]['total_dive_time'] : 0;
     }
 
+
+    public static function summary_location($user_id) {
+
+        $res = DB::select(array('location', 'name'), array(DB::expr('count(location)'), 'count'))
+            ->from('posts')
+            ->where('location', '!=', '')
+            ->and_where('user_id', '=', $user_id)
+            ->and_where('status', self::STATUS_DISP)
+            ->group_by('location')
+            ->order_by('count', 'desc')
+            ->execute()
+            ->as_array();
+        return $res;
+    }
+
     public static function summary_report($user_id) {
 
-        // todo index or チューニング
         $res = DB::select('creatures.*', array(DB::expr('count(posts_creatures.creature_id)'), 'postcount'))
             ->from('creatures')
             ->join('posts_creatures', 'LEFT')
