@@ -29,7 +29,6 @@
             <li><i class="icon-camera"></i> <?=$user->profiles->camera?></li>
             <li><i class="icon-map-marker"></i> <?=$user->profiles->location?></li>
             <li><i class="icon-bookmark"></i> <a href="<?=$user->profiles->website?>" target="_blank"><?=$user->profiles->website?></a></li>
-            <li><a href="<?=$user->profiles->twitter?>" class="twitter-follow-button" data-show-count="false" data-lang="ja">@<?=$user->username?>さんをフォロー</a>
             </li>
         </ul>
         <hr>
