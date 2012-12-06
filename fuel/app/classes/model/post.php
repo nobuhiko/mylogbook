@@ -101,7 +101,7 @@ class Model_Post extends \Orm\Model
 
         $res = DB::select_array(array(
                 array(DB::expr('count(id)'), 'count'),
-                array(DB::expr("DATE_FORMAT( date,  '%Y年')"), 'year')
+                array(DB::expr("DATE_FORMAT( date,  '%Y')"), 'year')
             ))
             ->from('posts')
             ->where('user_id', '=', $user_id)

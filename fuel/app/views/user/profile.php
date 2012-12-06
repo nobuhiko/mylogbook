@@ -40,7 +40,7 @@
         <?php if (is_array($yearly)) : ?>
         <ul class="unstyled">
         <?php foreach($yearly as $year): ?>
-        <li><?=$year['year']?> (<?=$year['count']?>)<//li>
+        <li><a href="<?=Uri::create('user/' . $user->username . '/year/' . $year['year'])?>"><?=$year['year']?>年 (<?=$year['count']?>)</a></li>
         <?php endforeach;?>
         </ul>
         <?php endif;?>
