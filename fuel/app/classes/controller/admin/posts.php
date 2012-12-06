@@ -14,6 +14,7 @@ class controller_admin_posts extends Controller_Admin
         $data['posts'] = Model_Post::find('all', array(
             'limit'     => Pagination::$per_page,
             'offset'    => Pagination::$offset,
+            'order_by'  => array(array('id', 'desc')),
         ));
         $data['pager'] = Pagination::create_links();
         $this->template->title      = "Posts";
@@ -26,7 +27,7 @@ class controller_admin_posts extends Controller_Admin
         $data['post'] = Model_Post::find($id);
 
         $this->template->title = "Post";
-        $this->template->content = View::forge('admin/posts/view', $data);
+        $this->template->content = View::forge('admin/view', $data);
 
     }
 

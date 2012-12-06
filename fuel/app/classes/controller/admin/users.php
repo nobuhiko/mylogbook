@@ -11,8 +11,10 @@ class controller_admin_users extends Controller_Admin
         );
         Pagination::set_config($config);
         $data['posts'] = Model_User::find('all', array(
+            'related'   => array('profiles'),
             'limit'     => Pagination::$per_page,
             'offset'    => Pagination::$offset,
+            'order_by'  => array(array('id', 'desc')),
         ));
         $data['pager'] = Pagination::create_links();
         $this->template->title      = "Users";
@@ -25,7 +27,7 @@ class controller_admin_users extends Controller_Admin
         $data['post'] = Model_User::find($id);
 
         $this->template->title = "User";
-        $this->template->content = View::forge('admin/users/view', $data);
+        $this->template->content = View::forge('admin/view', $data);
 
     }
 }
