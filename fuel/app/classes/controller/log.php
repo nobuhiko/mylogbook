@@ -18,7 +18,9 @@ class controller_log extends Controller_Base
             Response::redirect('welcome/404', 'location', 404);
         }
 
-        $this->template->title = " | " . $data['post']->date . 'のログ';
+        $this->template->set_global('keywords', $data['post']->report);
+        $this->template->set_global('description', str_replace(array("\r\n","\r","\n"), '', $data['post']->comment));
+        $this->template->title = ' | ' . $data['post']->date . ' ' . $data['post']->location . ' ' . $data['post']->point;
         $this->template->content = View::forge('log/view', $data);
     }
 

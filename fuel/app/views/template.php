@@ -13,6 +13,16 @@
     </style>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-site-verification" content="_UPWDoKwABDx9Ij0-VXbrLhzq4atj_ubT98HPsvkuB0">
+
+    <?php
+    $meta = array(
+        array('name' => 'robots', 'content' => 'no-cache'),
+        array('name' => 'description', 'content' => isset($description) ? $description : 'ダイビングのログを登録しプロフィールを作成出来ます。ログを登録して自分のダイビングを見返して見ませんか？' ),
+        array('name' => 'keywords', 'content' => isset($keywords) ? $keywords : '僕のログブック,ダイビング,ログブック,ライフログ,プロフィール'),
+      );
+    echo Html::meta($meta);
+    ?>
+
     <?php echo Asset::css('bootstrap-responsive.css'); ?>
 
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->

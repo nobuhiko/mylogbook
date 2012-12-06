@@ -22,8 +22,9 @@ class controller_user extends Controller_Base
 
         Model_Post::summary_userdata($data, $this->user->id);
 
+        $this->template->set_global('description', $this->user->profiles->description);
         $this->template->content = View::forge('user/profile', $data); // 共通tpl
-        $this->template->title = ' | ' . $this->username;
+        $this->template->title = ' | ' . $this->username . 'のログ';
     }
 
     public function action_log()
