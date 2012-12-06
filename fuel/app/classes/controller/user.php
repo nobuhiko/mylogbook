@@ -55,7 +55,7 @@ class controller_user extends Controller_Base
             //'total_items'    => $this->log_count,
             'uri_segment'    => 5,
         );
-        Pagination::set_config($config);
+        //Pagination::set_config($config);
 
         $data['posts'] = DB::select()
             ->from('posts')
@@ -63,8 +63,8 @@ class controller_user extends Controller_Base
             ->and_where('status', self::STATUS_DISP)
             ->and_where(DB::expr("DATE_FORMAT(date, '%Y')"), $this->param('year'))
             ->order_by('serial_dive_no', 'desc')
-            ->limit(Pagination::$per_page)
-            ->offset(Pagination::$offset)
+          //  ->limit(Pagination::$per_page)
+          //  ->offset(Pagination::$offset)
             ->as_object()
             ->execute();
 
