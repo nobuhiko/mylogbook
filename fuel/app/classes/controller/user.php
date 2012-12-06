@@ -24,7 +24,7 @@ class controller_user extends Controller_Base
 
         $this->template->set_global('description', $this->user->profiles->description);
         $this->template->content = View::forge('user/profile', $data); // 共通tpl
-        $this->template->title = ' | ' . $this->username . 'のログ';
+        $this->template->title = ' | ' . $this->user->profiles->full_name . 'のログ';
     }
 
     public function action_log()
