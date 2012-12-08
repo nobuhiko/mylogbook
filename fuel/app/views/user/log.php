@@ -1,5 +1,5 @@
 <?php if ($posts): ?>
-<table class="table table-striped">
+<table class="table table-striped responsive">
     <thead>
         <tr>
             <th>No</th>
@@ -14,7 +14,7 @@
         </tr>
     </thead>
     <tbody>
-<?php foreach ($posts as $post): ?>
+        <?php foreach ($posts as $post): ?>
         <tr>
             <td><?php echo $post->serial_dive_no; ?></td>
             <td><a href="/log/view/<?= $post->id?>"><?php echo $post->date; ?></a></td>

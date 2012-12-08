@@ -11,34 +11,41 @@
         padding-bottom: 40px;
       }
     </style>
+
+
+    <!--<![endif]-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-site-verification" content="_UPWDoKwABDx9Ij0-VXbrLhzq4atj_ubT98HPsvkuB0">
 
-    <?php
-    $meta = array(
-        array('name' => 'robots', 'content' => 'no-cache'),
-        array('name' => 'description', 'content' => isset($description) ? $description : 'ダイビングのログを登録しプロフィールを作成出来ます。ログを登録して自分のダイビングを見返して見ませんか？' ),
-        array('name' => 'keywords', 'content' => isset($keywords) ? $keywords : '僕のログブック,ダイビング,ログブック,ライフログ,プロフィール'),
-      );
-    echo Html::meta($meta);
-    ?>
+<?php
+$meta = array(
+  array('name' => 'robots', 'content' => 'no-cache'),
+  array('name' => 'description', 'content' => isset($description) ? $description : 'ダイビングのログを登録しプロフィールを作成出来ます。ログを登録して自分のダイビングを見返して見ませんか？' ),
+  array('name' => 'keywords', 'content' => isset($keywords) ? $keywords : '僕のログブック,ダイビング,ログブック,ライフログ,プロフィール'),
+);
+echo Html::meta($meta);
+?>
 
-    <?php echo Asset::css('bootstrap-responsive.css'); ?>
+<?php echo Asset::css(array(
+  'bootstrap-responsive.css',
+  'responsive-tables.css',
+  'datepicker.css',
+  'select2.css',
+)); ?>
 
-    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
-    <!--[if lt IE 9]>
+<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+<!--[if lt IE 9]>
 <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 <![endif]-->
 
-<?php echo Asset::css('datepicker.css'); ?>
-<?php echo Asset::css('select2.css'); ?>
 <?php echo Asset::js(array(
   'http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js',
   'bootstrap.js',
+  'responsive-tables.js'
 )); ?>
 
-  <link rel="shortcut icon" href="/favicon.ico">
-  <script type="text/javascript">
+<link rel="shortcut icon" href="/favicon.ico">
+<script type="text/javascript">
 $(function(){
   $('.dropdown-toggle').dropdown();
   $('.datepicker').datepicker();
