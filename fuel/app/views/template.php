@@ -117,7 +117,7 @@ $(function(){
       <hr/>
       <footer>
       <p class="pull-right"><a href="#">Back to top</a></p>
-      <p>&copy;僕のログブック
+      <p>&copy;僕のログブック | support <a href="https://twitter.com/#!/redsnow_" target="_blank">Twitter</a> <a href="https://www.facebook.com/pages/%E5%83%95%E3%81%AE%E3%83%AD%E3%82%B0%E3%83%96%E3%83%83%E3%82%AF/382466838502809" target="_blank">Facebook</a>
       </p>
 
       <div class="btn-group">

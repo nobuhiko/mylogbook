@@ -1,18 +1,6 @@
 <style type="text/css">
-    body {
-        min-height: 100%; /* html要素をウィンドウサイズにフィット */
-        background:url('http://farm8.staticflickr.com/7061/6928105627_f3f68404df_b.jpg') no-repeat center; /* 背景画像をhtml要素に表示 */
-        background-size:cover; /* 背景画像をhtml要素にフィット */
-    }
-
     .hero-unit h1 {
         margin-bottom:15px;
-    }
-    .fb_iframe_widget {
-        background-color:#fff;
-    }
-    .fb_edge_widget_with_comment {
-        background-color:transparent;
     }
 </style>
 
