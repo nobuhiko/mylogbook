@@ -17,8 +17,13 @@ $(document).ready(function() {
                         tokenSeparators: [","]});
 });
 
-
 $(function() {
+    $("#use_before_one").click(function(){
+        x = $("#form_serial_dive_no").val();
+        n = 1 + Number(x);
+        location.href = "<?=Uri::create('log/create/');?>" + n;
+        return false;
+    });
     $("#before_one").click(function(){
         location.href = "<?=Uri::create('log/create/');?>" + $("#form_serial_dive_no").val();
         return false;
@@ -36,7 +41,13 @@ $(function() {
         <?= $fieldset->field($field_name)->label_text(array('class'=>"control-label")) ?>
         <div class="controls">
             <?=$fieldset->field($field_name)->field_text(array('class'=>'span4'))?>
-            <span class="help-inline"><a href="#" id="before_one" class="btn btn-small btn-primary">1本前のデータを利用する</a><?= $fieldset->field($field_name)->error_text()?></span>
+            <span class="help-inline">
+            <?php if (Uri::segment(2) == 'edit'): ?>
+                <a href="#" id="use_before_one" class="btn btn-small btn-primary">このデータを使ってログを作成する</a>
+            <?php else: ?>
+                <a href="#" id="before_one" class="btn btn-small btn-primary">1本前のデータを利用する</a>
+            <?php endif; ?>
+                <?= $fieldset->field($field_name)->error_text()?></span>
         </div>
     </div>
 
