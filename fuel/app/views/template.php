@@ -60,19 +60,28 @@ $(function(){
   $('.dropdown-toggle').dropdown();
   $('.datepicker').datepicker();
 });
-(function(w,d){
+</script>
+<script type="text/javascript">
+
+(function (w, d) {
   <?php if (Fuel::$env == \Fuel::PRODUCTION): ?>
-  w._gaq=[["_setAccount","UA-11221610-17"],["_trackPageview"]];
+  w._gaq = [["_setAccount", "UA-11221610-17"],["_trackPageview"]];
   <?php endif;?>
-  w.___gcfg={lang:"ja"};
-  var s,e = d.getElementsByTagName("script")[0],
-    a=function(u,f){if(!d.getElementById(f)){s=d.createElement("script");
-  s.src=u;if(f){s.id=f;}e.parentNode.insertBefore(s,e);}};
-  a(("https:"==location.protocol?"//ssl":"//www")+".google-analytics.com/ga.js","ga");
+  w.___gcfg = {lang: "ja"};
+  var s, e = d.getElementsByTagName("script")[0],
+    a = function (u, i) {
+      if (!d.getElementById(i)) {
+        s = d.createElement("script");
+        s.src = u;
+        if (i) {s.id = i;}
+        e.parentNode.insertBefore(s, e);
+      }
+    };
+  a(("https:" == location.protocol ? "//ssl" : "//www") + ".google-analytics.com/ga.js", "ga");
   a("https://apis.google.com/js/plusone.js");
   a("//b.st-hatena.com/js/bookmark_button_wo_al.js");
-  a("//platform.twitter.com/widgets.js","twitter-wjs");
-  a("//connect.facebook.net/ja_JP/all.js#xfbml=1&appId=469589996416610","facebook-jssdk");
+  a("//platform.twitter.com/widgets.js", "twitter-wjs");
+  a("//connect.facebook.net/ja_JP/all.js#xfbml=1", "facebook-jssdk");
 })(this, document);
 </script>
 
