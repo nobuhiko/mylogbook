@@ -20,7 +20,17 @@
 <?php
 $meta = array(
   array('name' => 'robots', 'content' => 'no-cache'),
-  array('name' => 'description', 'content' => isset($description) ? $description : 'ダイビングのログを登録しプロフィールを作成出来ます。ログを登録して自分のダイビングを見返して見ませんか？' ),
+  array('name' => 'description',
+  'content' => isset($description) ? $description : '
+  眠っているログブック
+  登録しましょう！
+  前に○○行った時寒かったっけ？
+  ウェイトはいくつだったっけ？
+  どんなもの見たっけ？
+  紙のログブックだと探すのに時間がかかりませんか？？
+  僕のログブックはログブックを登録しておくことで過去の経験を見つけやすくするサービス
+  さあ、あなたのダイビングを可視化しましょう！
+  ' ),
   array('name' => 'keywords', 'content' => isset($keywords) ? $keywords : '僕のログブック,ダイビング,ログブック,ライフログ,プロフィール'),
 );
 echo Html::meta($meta);
