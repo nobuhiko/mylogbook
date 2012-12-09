@@ -63,7 +63,7 @@ return array(
 	 *
 	 * Can multiple providers be attached to one user account
 	 */
-	'link_multiple_providers' => true,
+	'link_multiple_providers' => false,
 
 	/**
 	 * default_group

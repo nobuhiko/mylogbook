@@ -17,7 +17,6 @@ class controller_setting extends Controller_Template
 
     public function action_profile()
     {
-
         $post = Model_Profile::find('first', array('where' => array('user_id' => $this->current_user->id)));
         $fieldset = $this->_fieldset()->populate($post);
 

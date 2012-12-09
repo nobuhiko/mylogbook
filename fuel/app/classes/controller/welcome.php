@@ -26,7 +26,7 @@ class Controller_Welcome extends Controller
     {
         $this->template->content = View::forge('welcome/index');
         $this->template->title = ' | ダイビングプロフィール登録サービス';
-		return $this->template;
+        return $this->template;
 	}
 
 	/**
