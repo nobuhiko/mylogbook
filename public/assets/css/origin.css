@@ -1,0 +1,30 @@
+body {
+    padding-top: 60px;
+    padding-bottom: 40px;
+}
+
+.stats {
+  overflow: hidden;
+  border-top: 1px solid #E8E8E8;
+  border-bottom: 1px solid #E8E8E8;
+  background-color: #F9F9F9;
+  margin: 18px 0;
+}
+
+.stats a {
+  float: left;
+  padding: 7px 12px;
+  color: #999;
+  font-size: 10px;
+  line-height: 16px;
+  text-transform: uppercase;
+  border-left: 1px solid #E8E8E8;
+}
+
+
+.stats a strong {
+display: block;
+color: #333;
+font-size: 14px;
+}
+

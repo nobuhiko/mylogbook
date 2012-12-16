@@ -4,14 +4,7 @@
     <meta charset="utf-8">
     <title><?php echo '僕のログブック' . $title; ?></title>
     <?php echo Asset::css('bootstrap.css'); ?>
-
-    <style type="text/css">
-      body {
-        padding-top: 60px;
-        padding-bottom: 40px;
-      }
-    </style>
-
+    <?php echo Asset::css('origin.css'); ?>
 
     <!--<![endif]-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
