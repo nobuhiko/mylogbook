@@ -2,11 +2,14 @@
 <html>
 <head>
 <meta charset="utf-8">
+<?php if (isset($noindex)): ?>
+<meta name="robots" content="index,nofollow">
+<?php endif; ?>
+
 <title><?php echo '僕のログブック' . $title; ?></title>
 <?php echo Asset::css('bootstrap.css'); ?>
 <?php echo Asset::css('origin.css'); ?>
 
-<!--<![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="google-site-verification" content="_UPWDoKwABDx9Ij0-VXbrLhzq4atj_ubT98HPsvkuB0">
 
@@ -64,6 +67,7 @@ $(function(){
 <meta property="og:site_name" content="僕のログブック">
 <meta property="og:locale" content="ja_JP">
 <meta property="fb:app_id" content="469589996416610">
+
 </head>
 <body>
 <div class="navbar navbar-inverse navbar-fixed-top">

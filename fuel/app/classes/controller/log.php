@@ -72,6 +72,7 @@ class controller_log extends Controller_Base
         $this->template->title = ' | ログを書く';
         $this->template->set_global('title', 'ログを書く', false);
         $this->template->content = View::forge('log/create');
+        $this->template->set_global('noindex', true);
     }
 
     public function action_edit($id = null)
@@ -112,6 +113,7 @@ class controller_log extends Controller_Base
         $this->template->title = ' | ログを編集する';
         $this->template->set_global('title', 'ログを編集する', false);
         $this->template->content    = View::forge('log/edit', $data);
+        $this->template->set_global('noindex', true);
     }
 
     public function action_delete($id = null)
@@ -130,6 +132,7 @@ class controller_log extends Controller_Base
             Session::set_flash('error', e('Could not delete log #'.$id));
         }
 
+        $this->template->set_global('noindex', true);
         Response::redirect('user/' . $this->current_user->username);
 
     }

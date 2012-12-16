@@ -2,6 +2,7 @@
 <html>
 <head>
 	<meta charset="utf-8">
+    <meta name="robots" content="index,nofollow">
 	<title><?php echo $title; ?></title>
     <?php echo Asset::css('bootstrap.css'); ?>
 	<?php echo Asset::css('datepicker.css'); ?>
