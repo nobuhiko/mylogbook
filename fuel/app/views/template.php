@@ -48,6 +48,8 @@ echo Html::meta($meta);
 )); ?>
 
 <link rel="shortcut icon" href="/favicon.ico">
+<link rel="canonical" href="<?=Uri::main()?>">
+<link rel="alternate" media="handheld" href="<?=Uri::main()?>" />
 <script type="text/javascript">
 $(function(){
   $('.dropdown-toggle').dropdown();
