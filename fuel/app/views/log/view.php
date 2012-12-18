@@ -171,7 +171,9 @@
     </div>
 </div>
 
+<?php if (Auth::check()): ?>
 <ul class="pager">
     <li><?php echo Html::anchor('log/edit/'.$post->id, 'Edit'); ?></li>
     <li><?php echo Html::anchor('log/delete/'.$post->id, 'Delete'); ?></li>
 </ul>
+<?php endif; ?>
