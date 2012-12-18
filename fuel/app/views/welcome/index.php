@@ -18,7 +18,7 @@
         </p>
 
         <p>
-<?php if (Auth::check()): ?>
+<?php if (!Auth::check()): ?>
         <a href="<?= Uri::create('auth/session/twitter')?>" class="btn btn-large btn-primary">Sign in with Twitter</a>
 <?php endif; ?>
         <a href="<?= Uri::create('user/redsnow_')?>" class="btn btn-large">Demo</a>
